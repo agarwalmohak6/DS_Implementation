@@ -97,6 +97,38 @@ public class Singly_Linked_List {
         return head;
     }
 
+    // Method to delete first node
+    public Node delete_first_node(){
+        Node temp=head;
+        if(temp==null){
+            System.out.println("Invalid action, LL is empty.");
+            return null;
+        }
+        if(temp.next==null){
+            System.out.println("Only one node is present that is deleted, now LL is empty.");
+            return null;
+        }
+        return temp.next;
+    }
+
+    // Method to delete last node
+    public Node delete_last_node(){
+        Node temp=head;
+        if(temp==null){
+            System.out.println("Invalid action, LL is empty.");
+            return null;
+        }
+        if(temp.next==null){
+            System.out.println("Only one node is present that is deleted, now LL is empty.");
+            return null;
+        }
+        while(temp.next.next!=null){
+            temp=temp.next;
+        }
+        temp.next=null;
+        return head;
+    }
+
     // Method to count total number of nodes
     public void nodecount() {
         int c = 0;
@@ -132,9 +164,11 @@ public class Singly_Linked_List {
         llist.insert_last(4);
         llist.insert_last(5);
         llist.insert_front(69);
-        llist.head = llist.insert_before_node_at_specific_position(50, 5);    // node must be inserted at 4 position
-        llist.head = llist.insert_at_specific_position(15, 2);                // node must be inserted at 2 position
-        llist.head = llist.insert_after_node_at_specific_position(60, 7);     // node must be inserted at 8 position
+        llist.head = llist.insert_before_node_at_specific_position(50, 5);
+        llist.head = llist.insert_at_specific_position(15, 2);
+        llist.head = llist.insert_after_node_at_specific_position(60, 7);
+        llist.head = llist.delete_first_node();
+        llist.head = llist.delete_last_node();
         llist.printAll();
         llist.nodecount();
     }
