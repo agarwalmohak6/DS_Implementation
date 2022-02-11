@@ -145,7 +145,7 @@ public class Singly_Linked_List {
     public Node delete_node_before_specific_position(int pos){
         int c=1;
         Node temp = head;
-        while(c<pos-2){
+        while(c<pos-2 && temp.next!=null){
             c++;
             temp=temp.next;
         }
@@ -157,7 +157,7 @@ public class Singly_Linked_List {
     public Node delete_node_after_specific_position(int pos){
         int c=1;
         Node temp = head;
-        while(c<pos){
+        while(c<pos && temp.next.next!=null){
             c++;
             temp=temp.next;
         }
