@@ -155,10 +155,12 @@ public class Singly_Linked_List {
     public static void main(String[] args) {
         Singly_Linked_List llist = new Singly_Linked_List();
         llist.head = new Node(1);
-//        Node second = new Node(2);
-//        Node third = new Node(3);
-//        llist.head.next = second;
-//        second.next=third;
+/*
+        Node second = new Node(2);
+        Node third = new Node(3);
+        llist.head.next = second;
+        second.next=third;
+*/
         llist.insert_last(2);
         llist.insert_last(3);
         llist.insert_last(4);
