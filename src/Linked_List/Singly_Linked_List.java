@@ -153,7 +153,17 @@ public class Singly_Linked_List {
         return head;
     }
 
-
+    // Method to delete node after specific position
+    public Node delete_node_after_specific_position(int pos){
+        int c=1;
+        Node temp = head;
+        while(c<pos){
+            c++;
+            temp=temp.next;
+        }
+        temp.next=temp.next.next;
+        return head;
+    }
 
     // Method to count total number of nodes
     public void nodecount() {
