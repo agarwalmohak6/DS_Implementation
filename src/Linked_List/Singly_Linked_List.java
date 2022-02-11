@@ -141,6 +141,20 @@ public class Singly_Linked_List {
         return head;
     }
 
+    // Method to delete node before specific position
+    public Node delete_node_before_specific_position(int pos){
+        int c=1;
+        Node temp = head;
+        while(c<pos-2){
+            c++;
+            temp=temp.next;
+        }
+        temp.next=temp.next.next;
+        return head;
+    }
+
+
+
     // Method to count total number of nodes
     public void nodecount() {
         int c = 0;
@@ -183,7 +197,9 @@ public class Singly_Linked_List {
         llist.head = llist.insert_after_node_at_specific_position(60, 7);
         llist.head = llist.delete_first_node();
         llist.head = llist.delete_last_node();
-        llist.head = llist.delete_node_at_specific_position();
+        llist.head = llist.delete_node_at_specific_position(6);
+        llist.head = llist.delete_node_before_specific_position(6);
+        llist.head = llist.delete_node_after_specific_position(6);
         llist.printAll();
         llist.nodecount();
     }
