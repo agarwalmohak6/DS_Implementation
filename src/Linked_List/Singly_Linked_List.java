@@ -165,6 +165,20 @@ public class Singly_Linked_List {
         return head;
     }
 
+    // Method to reverse a Linked List
+    public Node reverse(){
+        if(head==null || head.next==null) return head;
+        Node prev=null;
+        Node curr=head;
+        while(curr!=null){
+            Node nextnode=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=nextnode;
+        }
+        return prev;
+    }
+
     // Method to count total number of nodes
     public void nodecount() {
         int c = 0;
@@ -212,5 +226,7 @@ public class Singly_Linked_List {
         llist.head = llist.delete_node_after_specific_position(6);
         llist.printAll();
         llist.nodecount();
+        llist.head=llist.reverse();
+        llist.printAll();
     }
 }
