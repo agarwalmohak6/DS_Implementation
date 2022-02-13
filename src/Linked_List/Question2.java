@@ -86,9 +86,9 @@ public class Question2 {
             }
         }
         int ans[]=new int[c];
-        for(int i=0;i<r;i++){
+        for(int i=0;i<c;i++){
             int s=0;
-            for(int j=0;j<c;j++){
+            for(int j=0;j<r;j++){
                 s+=arr[j][i];
             }
             ans[i]=s;
