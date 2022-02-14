@@ -23,26 +23,28 @@ public class Stack_using_Array {
         if(isFull()){
             System.out.println("Overflow");
         }
+        System.out.println("pushed value is:- "+data);
         arr[++tos]=data;
     }
     public void pop(){
         if(isEmpty()){
             System.out.println("Underflow");
         }
-        System.out.print(arr[tos--]+" ");
+        System.out.println("Popped value is:- "+arr[tos--]);
     }
     public void peek(){
         if(isEmpty()){
             System.out.println("Underflow");
         }
-        System.out.println();
-        System.out.println(arr[tos]);
+        System.out.println("Value at tos is:-"+arr[tos]);
     }
-//    public void printAll(){
-//        for (int i = tos; i > -1; i--) {
-//            System.out.print(arr[i]+" ");
-//        }
-//    }
+    public void printAll(){
+        System.out.print("All elements of stack are:- ");
+        for (int i = tos; i > -1; i--) {
+            System.out.print(arr[i]+" ");
+        }
+        System.out.println();
+    }
     public static void main(String[] args) {
         Scanner sc= new Scanner(System.in);
         System.out.print("Enter size of array:- ");
@@ -51,12 +53,12 @@ public class Stack_using_Array {
         st.push(10);
         st.push(20);
         st.push(30);
-        //st.printAll();
+        st.printAll();
         st.peek();
         st.pop();
         st.pop();
         st.push(40);
-        //st.printAll();
+        st.printAll();
         st.peek();
     }
 }
