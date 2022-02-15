@@ -1,6 +1,6 @@
 package Queue;
 
-public class Doubly_Ended_Queue_using_Linked_List {
+public class Doubly_Ended_Queue_using_Singly_Linked_List {
     Node front,rear;
     static class Node{
         int data;
@@ -62,7 +62,7 @@ public class Doubly_Ended_Queue_using_Linked_List {
         }
     }
     public static void main(String[] args) {
-        Doubly_Ended_Queue_using_Linked_List obj=new Doubly_Ended_Queue_using_Linked_List();
+        Doubly_Ended_Queue_using_Singly_Linked_List obj=new Doubly_Ended_Queue_using_Singly_Linked_List();
         obj.dequeue_rear();
         obj.enqueue_front(10);
         obj.enqueue_rear(20);
