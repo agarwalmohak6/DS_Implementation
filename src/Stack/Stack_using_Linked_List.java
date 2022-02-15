@@ -11,10 +11,12 @@ public class Stack_using_Linked_List {
             next = null;
         }
     }
+
     // Method to check if stack is empty
     public boolean isempty() {
         return head == null;
     }
+
     // Method to push data at top of stack
     public void push(int x) {
         Node n = new Node(x);
@@ -26,6 +28,7 @@ public class Stack_using_Linked_List {
         }
         System.out.println("Data pushed " + x);
     }
+
     // Method to pop top of stack element
     public void pop() {
         if (isempty()) {
@@ -35,6 +38,7 @@ public class Stack_using_Linked_List {
             head = head.next;
         }
     }
+
     // Method to print top of stack
     public void peek() {
         System.out.println("Peek Element is -> " + head.data);
