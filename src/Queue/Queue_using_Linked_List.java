@@ -10,13 +10,13 @@ public class Queue_using_Linked_List {
             next = null;
         }
     }
-
+    // Method to check if queue is empty
     public boolean isempty() {
         if (front == null)
             return true;
         return false;
     }
-
+    // Method to insert in queue
     public void enqueue(int data) {
         Node newnode = new Node(data);
         if (isempty()) {
@@ -26,7 +26,7 @@ public class Queue_using_Linked_List {
             rear = newnode;
         }
     }
-
+    // Method to delete from queue
     public void dequeue() {
         if (isempty())
             System.out.println("Underflow");
@@ -35,7 +35,7 @@ public class Queue_using_Linked_List {
             front = front.next;
         }
     }
-
+    // Main method
     public static void main(String[] args) {
         Queue_using_Linked_List obj=new Queue_using_Linked_List();
         obj.dequeue();
