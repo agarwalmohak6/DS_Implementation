@@ -1,5 +1,5 @@
 package Trees;
-
+import java.util.ArrayList;
 public class BSTUsingLL {
     static Node root;
     static class Node{
@@ -31,6 +31,16 @@ public class BSTUsingLL {
         }
         return root;
     }
+    static ArrayList<Integer> al=new ArrayList<>();
+    public static void inorder(Node root){
+        Node r=root;
+        if(r!=null){
+            inorder(r.left);
+            al.add(r.data);
+            System.out.print(r.data+" ");
+            inorder(r.right);
+        }
+    }
     public void printpreorder(Node root){
         Node r1=root;
         if(r1!=null){
@@ -51,15 +61,76 @@ public class BSTUsingLL {
             result=search(root.right,value);
         return result;
     }
+    public static boolean isBST(Node root)
+    {
+        inorder(root);
+        for(int i=0;i<al.size()-1;i++){
+            if(al.get(i)>al.get(i+1))
+                return false;
+        }
+        if(al.get(al.size()-1)<al.get(al.size()-2))
+            return false;
+        return true;
+    }
+    public static int min(Node root){
+        Node r=root;
+        if(r.left==null)
+            return root.data;
+        return min(root.left);
+    }
+    public static int max(Node root){
+        Node r=root;
+        if(r.right==null)
+            return root.data;
+        return max(root.right);
+    }
+    public static Node delete(Node root, int k){
+        if(root==null)
+        {
+            return null;
+        }
+        if(root.data>k)
+        {
+            root.left= delete(root.left,k);
+        }
+        else if(root.data<k)
+        {
+            root.right=delete(root.right,k);
+        }
+        else
+        {
+            if(root.left==null)
+            {
+                return root.right;
+            }
+            else if(root.right==null)
+            {
+                return root.left;
+            }
+            root.data=min(root.right);
+            root.right=delete(root.right,root.data);
+        }
+        return root;
+    }
     public static void main(String[] args) {
         BSTUsingLL obj=new BSTUsingLL();
-        root=new Node(15);
-        root.left=new Node(10);
-        root.left.left=new Node(8);
-        root.right=new Node(20);
-        obj.insert(root.left,12);
-        obj.printpreorder(root);
-        System.out.println(obj.search(root,8));
-        System.out.println(obj.search(root,80));
+        root=insert(root,50);
+        root=insert(root,30);
+        root=insert(root,20);
+        root=insert(root,40);
+        root=insert(root,70);
+        root=insert(root,60);
+        root=insert(root,80);
+        obj.inorder(root);
+//        System.out.println(obj.search(root,8));
+//        System.out.println(obj.search(root,80));
+//        System.out.println(isBST(root));
+        //System.out.println(min(root));
+        //System.out.println(max(root));
+        //System.out.println();
+        //System.out.print(min(root));
+        root=delete(root,80);
+        System.out.println();
+        obj.inorder(root);
     }
 }
