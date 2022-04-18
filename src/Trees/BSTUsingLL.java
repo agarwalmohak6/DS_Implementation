@@ -107,30 +107,42 @@ public class BSTUsingLL {
             {
                 return root.left;
             }
-            root.data=min(root.right);
-            root.right=delete(root.right,root.data);
+//            root.data=min(root.right);
+//            root.right=delete(root.right,root.data);
+            root.data = max(root.left);
+            root.left = delete(root.left, root.data);
         }
         return root;
     }
+    public static Node getSuccessor(Node curr){
+        curr=curr.right;
+        while(curr!=null && curr.left!=null)
+            curr=curr.left;
+        return curr;
+    }
     public static void main(String[] args) {
         BSTUsingLL obj=new BSTUsingLL();
-        root=insert(root,50);
-        root=insert(root,30);
+        root=insert(root,15);
+        root=insert(root,10);
+        root=insert(root,8);
+        root=insert(root,12);
         root=insert(root,20);
-        root=insert(root,40);
-        root=insert(root,70);
-        root=insert(root,60);
-        root=insert(root,80);
+        root=insert(root,18);
+        root=insert(root,16);
+        root=insert(root,19);
+        root=insert(root,30);
         obj.inorder(root);
 //        System.out.println(obj.search(root,8));
 //        System.out.println(obj.search(root,80));
 //        System.out.println(isBST(root));
         //System.out.println(min(root));
         //System.out.println(max(root));
+        System.out.println();
+//        System.out.print(getSuccessor(root).data);
         //System.out.println();
         //System.out.print(min(root));
-        root=delete(root,80);
-        System.out.println();
-        obj.inorder(root);
+        root=delete(root,19);
+        root=delete(root,15);
+        inorder(root);
     }
 }
