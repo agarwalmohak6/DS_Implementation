@@ -3,6 +3,8 @@ import java.util.*;
 
 public class GraphUsingList {
     Map<Integer, ArrayList<Integer>> obj=new HashMap<>();
+
+    // Graph implementation method
     public void add_edge(int v1, int v2, boolean bidirectional){
         ArrayList<Integer> v1neighbours=obj.getOrDefault(v1,new ArrayList<>());
         v1neighbours.add(v2);
@@ -13,6 +15,8 @@ public class GraphUsingList {
             obj.put(v2,v2neighbours);
         }
     }
+
+    // BFS Traversal method
     public void BFSTraversal(int source){
         Queue<Integer> q=new LinkedList<>();
         q.add(source);
@@ -30,6 +34,7 @@ public class GraphUsingList {
             }
         }
     }
+
     public static void main(String[] args){
         GraphUsingList g=new GraphUsingList();
         g.add_edge(1,2,true);
