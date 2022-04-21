@@ -15,7 +15,6 @@ public class GraphUsingList {
             obj.put(v2,v2neighbours);
         }
     }
-
     // BFS Traversal method
     public void BFSTraversal(int source){
         Queue<Integer> q=new LinkedList<>();
@@ -35,11 +34,38 @@ public class GraphUsingList {
         }
     }
 
+    // SSSP --> Single source shortest path method
+    public void SSSP(int source){
+        Queue<Integer> q=new LinkedList<>();
+        q.add(source);
+        Map<Integer,Integer> dis=new HashMap<>();
+        for(Integer vertex:obj.keySet()){
+            dis.put(vertex,Integer.MAX_VALUE);
+        }
+        dis.put(source,0);
+        while(!q.isEmpty()){
+            int front=q.poll();
+            ArrayList<Integer> neighbourList=obj.getOrDefault(front,new ArrayList<>());
+            for(Integer neighbour:neighbourList){
+                if(dis.get(neighbour)==Integer.MAX_VALUE){
+                    q.add(neighbour);
+                    int distance=dis.get(front)+1;
+                    dis.put(neighbour,distance);
+                }
+            }
+        }
+        for (Map.Entry<Integer,Integer>res: dis.entrySet())
+            System.out.println(res.getKey()+"-->"+res.getValue());
+    }
+    // Main method
     public static void main(String[] args){
         GraphUsingList g=new GraphUsingList();
         g.add_edge(1,2,true);
-        g.add_edge(2,3,false);
+        g.add_edge(2,4,true);
         g.add_edge(3,4,true);
+        g.add_edge(3,1,true);
+        g.add_edge(3,5,true);
+        g.add_edge(5,6,true);
         for(Map.Entry<Integer, ArrayList<Integer>> res:g.obj.entrySet()){
             System.out.print(res.getKey()+": ");
             System.out.println(res.getValue());
@@ -52,5 +78,10 @@ public class GraphUsingList {
         g.BFSTraversal(3);
         System.out.println();
         g.BFSTraversal(4);
+        System.out.println();
+        System.out.println("SSSP below from 1 to all");
+        g.SSSP(1);
+        System.out.println("SSSP below from 4 to all");
+        g.SSSP(4);
     }
 }
