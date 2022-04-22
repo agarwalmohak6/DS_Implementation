@@ -15,6 +15,7 @@ public class GraphUsingList {
             obj.put(v2,v2neighbours);
         }
     }
+
     // BFS Traversal method
     public void BFSTraversal(int source){
         Queue<Integer> q=new LinkedList<>();
@@ -57,6 +58,23 @@ public class GraphUsingList {
         for (Map.Entry<Integer,Integer>res: dis.entrySet())
             System.out.println(res.getKey()+"-->"+res.getValue());
     }
+
+    // DFS Traversal
+    public void DFS(int source){
+        Set<Integer> visited=new HashSet<>();
+        DFSHelper(source,visited);
+    }
+    private void DFSHelper(int source,Set<Integer> visited){
+        System.out.print(source+" ");
+        visited.add(source);
+        ArrayList<Integer> neighbourList=obj.get(source);
+        for(Integer i:neighbourList){
+            if(!visited.contains(i)){
+                DFSHelper(i,visited);
+            }
+        }
+    }
+
     // Main method
     public static void main(String[] args){
         GraphUsingList g=new GraphUsingList();
@@ -83,5 +101,7 @@ public class GraphUsingList {
         g.SSSP(1);
         System.out.println("SSSP below from 4 to all");
         g.SSSP(4);
+        System.out.println("DFS traversal from 1 is");
+        g.DFS(1);
     }
 }
