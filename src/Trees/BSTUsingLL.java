@@ -73,16 +73,14 @@ public class BSTUsingLL {
         return true;
     }
     public static int min(Node root){
-        Node r=root;
-        if(r.left==null)
+        if(root.left==null)
             return root.data;
         return min(root.left);
     }
     public static int max(Node root){
-        Node r=root;
-        if(r.right==null)
-            return root.data;
-        return max(root.right);
+        while(root.right!=null)
+            root=root.right;
+        return root.data;
     }
     public static Node delete(Node root, int k){
         if(root==null)
@@ -107,18 +105,10 @@ public class BSTUsingLL {
             {
                 return root.left;
             }
-//            root.data=min(root.right);
-//            root.right=delete(root.right,root.data);
-            root.data = max(root.left);
-            root.left = delete(root.left, root.data);
+            root.data=min(root.right);
+            root.right=delete(root.right,root.data);
         }
         return root;
-    }
-    public static Node getSuccessor(Node curr){
-        curr=curr.right;
-        while(curr!=null && curr.left!=null)
-            curr=curr.left;
-        return curr;
     }
     public static void main(String[] args) {
         BSTUsingLL obj=new BSTUsingLL();
