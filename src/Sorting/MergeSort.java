@@ -1,5 +1,7 @@
 package Sorting;
 
+import java.util.Scanner;
+
 public class MergeSort {
     void merge(int a[], int beg, int mid, int end)
     {
@@ -59,22 +61,22 @@ public class MergeSort {
             merge(a, beg, mid, end);
         }
     }
-    /* Function to print the array */
-    void printArray(int a[], int n)
-    {
-        for (int i = 0; i < n; i++)
-            System.out.print(a[i] + " ");
-    }
     public static void main(String args[])
     {
-        int a[] = { 11, 30, 24, 7, 31, 16, 39, 41 };
-        int n = a.length;
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter size of array");
+        int n=sc.nextInt();
+        int a[]=new int[n];
+        System.out.println("Enter array elements");
+        for(int i=0;i<n;i++)
+            a[i]= sc.nextInt();
+        System.out.println("Unsorted array is");
+        for(int i=0;i<n;i++)
+            System.out.print(a[i]+" ");
         MergeSort m1 = new MergeSort();
-        System.out.println("\nBefore sorting array elements are - ");
-        m1.printArray(a, n);
         m1.mergeSort(a, 0, n - 1);
-        System.out.println("\nAfter sorting array elements are - ");
-        m1.printArray(a, n);
-        System.out.println("");
+        System.out.println("\nSorted array is");
+        for(int i=0;i<n;i++)
+            System.out.print(a[i]+" ");
     }
 }
