@@ -47,8 +47,8 @@ public class QuickSort {
         System.out.println("Unsorted array is");
         for(int i=0;i<n;i++)
             System.out.print(a[i]+" ");
-        MergeSort m1 = new MergeSort();
-        m1.mergeSort(a, 0, n - 1);
+        QuickSort m1 = new QuickSort();
+        m1.quick(a, 0, n - 1);
         System.out.println();
         System.out.println("Sorted array is");
         for(int i=0;i<n;i++)
